@@ -36,11 +36,12 @@
 		zipForm.submit();
 	}
 	
-	function sendD(zipcode, area1, area2, area3, area4) {
-		var addr = area1 + "" + area2 + "" + area3 + "" + area4;
-
+	function send(zipcode, area1, area2, area3, area4) {
 		opener.document.regForm.zipcode.value = zipcode;
+
+		var addr = area1 + "" + area2 + "" + area3 + "" + area4;
 		opener.document.regForm.address.value = addr;
+		
 		window.close();
 	}
 </script>
