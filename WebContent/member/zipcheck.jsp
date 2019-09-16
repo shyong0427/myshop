@@ -11,7 +11,6 @@
 	
 	ArrayList<ZipcodeBean> list = memberMgr.zipcodeRead(p_area3);
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +34,14 @@
 			return;
 		}
 		zipForm.submit();
+	}
+	
+	function sendD(zipcode, area1, area2, area3, area4) {
+		var addr = area1 + "" + area2 + "" + area3 + "" + area4;
+
+		opener.document.regForm.zipcode.value = zipcode;
+		opener.document.regForm.address.value = addr;
+		window.close();
 	}
 </script>
 </head>
@@ -79,8 +86,9 @@
 					
 					if (area4 == null) area4 = "";
 %>
-					<%=zipcode%> <%=area1 %> <%=area2 %> <%=area3 %> <%=area4 %>
-					<br>
+					<a href="javascript:send('<%=zipcode%>', '<%=area1 %>', '<%=area2 %>', '<%=area3 %>', '<%=area4 %>')">
+						<%=zipcode%> <%=area1 %> <%=area2 %> <%=area3 %> <%=area4 %>
+					</a><br>
 <%
 				}
 %>
