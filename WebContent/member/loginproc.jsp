@@ -11,7 +11,8 @@
 	
 	if(b) {
 		session.setAttribute("idKey", id);
-		response.sendRedirect("login.jsp");		
+//		response.sendRedirect("login.jsp");
+		response.sendRedirect("../guest/guest_index.jsp");
 	} else {
 		response.sendRedirect("loginfail.html");
 	}
