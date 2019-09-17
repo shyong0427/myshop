@@ -78,6 +78,7 @@ public class MemberMgr {
 			pstmt.setString(1, id);
 			
 			rs = pstmt.executeQuery();
+			
 			b = rs.next();
 			
 		} catch (Exception e) {
@@ -116,6 +117,36 @@ public class MemberMgr {
 			
 		} catch (Exception e) {
 			System.out.println("memberInsert err : " + e);
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		
+		return b;
+	}
+	
+	public boolean loginChk(String id, String passwd) {
+		boolean b = false;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = "select * from member where id = ? and passwd = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, passwd);
+			
+			rs = pstmt.executeQuery();
+			
+			b = rs.next();
+			
+		} catch (Exception e) {
+			System.out.println("loginChk err : " + e);
 		} finally {
 			try {
 				if (rs != null) rs.close();
