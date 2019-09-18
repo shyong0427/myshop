@@ -64,3 +64,18 @@ function inputCheck() {
 	
 	regForm.submit();
 }
+
+//로그인 후 개인정보 수정
+function memberUpdate() {
+	// 입력자료 검사 생략
+	document.updateForm.submit();
+}
+
+function memberUpdateCancel() {
+//	history.back();
+	location.href="../guest/guest_index.jsp";
+}
+
+function memberDelete() {
+	alert("회원탈퇴는 불가능합니다.");
+}
