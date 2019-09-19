@@ -227,4 +227,68 @@ public class MemberMgr {	// DAO
 		}
 		return b;
 	}
+	
+	public boolean adminloginCheck(String adminid, String adminpasswd) {
+		boolean b = false;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = "select * from admin where admin_id = ? and admin_passwd = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, adminid);
+			pstmt.setString(2, adminpasswd);
+			
+			rs = pstmt.executeQuery();
+			
+			b = rs.next();			
+		} catch (Exception e) {
+			System.out.println("adminloginCheck err : " + e);
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		return b;
+	}
+	
+	public ArrayList<MemberDto> getMemberAll() {
+		ArrayList<MemberDto> list = new ArrayList<MemberDto>();
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = "select * from member ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberDto dto = new MemberDto();
+				
+				dto.setId(rs.getString("id"));
+				dto.setPasswd(rs.getString("passwd"));
+				dto.setName(rs.getString("name"));
+				dto.setEmail(rs.getString("email"));
+				dto.setPhone(rs.getString("phone"));
+				
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			System.out.println("getMemberAll err : " + e);
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		return list;
+	}
 }

@@ -49,7 +49,7 @@ function inputCheck() {
 	var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
 	
 	if(!regForm.email.value.match(regExp)) {
-		alert("이메일을 정화히 입력하세요.");
+		alert("이메일을 정확히 입력하세요.");
 		regForm.email.focus();
 		return;
 	}
@@ -78,4 +78,17 @@ function memberUpdateCancel() {
 
 function memberDelete() {
 	alert("회원탈퇴는 불가능합니다.");
+}
+
+function memberUpdate(id) {
+	document.updateFrm.id.value = id;
+	document.updateFrm.submit();
+}
+
+function memberUpdateAdmin() {
+	alert("a");
+}
+
+function memberUpdateCancelAdmin() {
+	alert("b");
 }
