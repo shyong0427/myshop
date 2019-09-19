@@ -17,12 +17,12 @@
 	if(b) {
 %>
 <script>
-	alert("수정 성공");
+	alert("수정에 성공하였습니다.");
 	location.href="../guest/guest_index.jsp";
 </script>
 <%  } else { %>
 <script>
-	alert("수정 실패\n관리자에세 문의하세요.");
+	alert("수정에 실패하였습니다.\n관리자에세 문의하세요.");
 	history.back();	
 </script>
 <%

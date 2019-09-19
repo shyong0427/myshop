@@ -36,7 +36,7 @@
 			<tr>
 				<td>아이디</td>  
 				<td><%=dto.getId() %></td>
-				<td><input type="hidden" name="passwd" value="<%=dto.getId() %>"></td>
+				<td><input type="hidden" name="id" value="<%=dto.getId() %>"></td>				
 			</tr>
 			<tr>
 				<td>비밀번호</td>
