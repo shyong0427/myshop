@@ -86,9 +86,9 @@ function memberUpdate(id) {
 }
 
 function memberUpdateAdmin() {
-	alert("a");
+	document.updateFormAdmin.submit();
 }
 
 function memberUpdateCancelAdmin() {
-	alert("b");
+	location.href = "membermanager.jsp";
 }
