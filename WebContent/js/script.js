@@ -93,7 +93,7 @@ function memberUpdateCancelAdmin() {
 	location.href = "membermanager.jsp";
 }
 
-// 관리자 상품처리
+// 관리자 상품처리, 고객이용가능
 function productDetail(no) {
 	document.detailFrm.no.value = no;
 	document.detailFrm.submit();
