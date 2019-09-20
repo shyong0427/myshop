@@ -92,3 +92,21 @@ function memberUpdateAdmin() {
 function memberUpdateCancelAdmin() {
 	location.href = "membermanager.jsp";
 }
+
+// 관리자 상품처리
+function productDetail(no) {
+	document.detailFrm.no.value = no;
+	document.detailFrm.submit();
+}
+
+function productUpdate(no) {
+	document.updateFrm.no.value = no;
+	document.updateFrm.submit();
+}
+
+function productDelete(no) {
+	if(confirm("정말 삭제할까요?")){
+		document.delFrm.no.value = no;
+		document.delFrm.submit();
+	} 
+}

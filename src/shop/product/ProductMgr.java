@@ -107,4 +107,42 @@ public class ProductMgr {
 		}
 		return b;
 	}
+	
+	public ProductBean getProduct(String no) {
+		ProductBean bean = null;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = "select * from shop_product where no = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				bean = new ProductBean();
+				bean.setNo(rs.getInt("no"));
+				bean.setName(rs.getString("name"));
+				bean.setPrice(rs.getString("price"));
+				bean.setDetail(rs.getString("detail"));
+				bean.setSdate(rs.getString("sdate"));
+				bean.setStock(rs.getString("stock"));
+				bean.setImage(rs.getString("image"));
+				
+			}
+		} catch (Exception e) {
+			System.out.println("getProduct err : " + e);
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		
+		return bean;
+	}
 }
