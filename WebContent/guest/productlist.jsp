@@ -9,6 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>고객용 상품 목록</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../js/script.js"></script>
 </head>
 <body>
 <%@ include file="guest_top.jsp" %>

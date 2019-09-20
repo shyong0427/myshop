@@ -7,4 +7,5 @@
 <%
 	String flag = request.getParameter("flag");	// 구매목록 보기, 수정, 삭제 판단용 변수
 	String id = (String)session.getAttribute("idKey");
+	out.print(order.getProduct_no() + " 주문량  : " + order.getQuantity() + " " + id);
 %>
