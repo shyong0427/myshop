@@ -81,7 +81,6 @@ public class ProductMgr {
 			String sql = "insert into shop_product(name, price, detail, sdate, stock, image) values (?, ?, ?, now(), ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setString(1, multi.getParameter("name"));
 			pstmt.setString(2, multi.getParameter("price"));
 			pstmt.setString(3, multi.getParameter("detail"));
@@ -144,5 +143,74 @@ public class ProductMgr {
 		}
 		
 		return bean;
+	}
+	
+	public boolean updateProduct(HttpServletRequest request) {
+		boolean b = false;
+		
+		try {
+			// 업로드 할 이미지 절대 경로
+			String uploadDir = "C:/dev/eclipse-workspace/myshop/WebContent/data";
+			MultipartRequest multi = new MultipartRequest(request, uploadDir, 5 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
+			
+			conn = ds.getConnection();
+			
+			if(multi.getFilesystemName("image") == null) {
+				String sql = "update shop_product set name = ?, price = ?, detail = ?, stock = ? where no = ? ";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, multi.getParameter("name"));
+				pstmt.setString(2, multi.getParameter("price"));
+				pstmt.setString(3, multi.getParameter("detail"));
+				pstmt.setString(4, multi.getParameter("stock"));
+				pstmt.setString(5, multi.getParameter("no"));
+			} else {
+				String sql = "update shop_product set name = ?, price = ?, detail = ?, stock = ?, image = ? where no = ? ";
+
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, multi.getParameter("name"));
+				pstmt.setString(2, multi.getParameter("price"));
+				pstmt.setString(3, multi.getParameter("detail"));
+				pstmt.setString(4, multi.getParameter("stock"));
+				pstmt.setString(5, multi.getFilesystemName("image"));
+				pstmt.setString(6, multi.getParameter("no"));
+			}
+			
+			if(pstmt.executeUpdate() > 0) b = true;
+		} catch (Exception e) {
+			System.out.println("updateProduct err : " + e);
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		return b;
+	}
+	
+	public boolean deleteProduct(String no) {
+		boolean b = false;
+		try {
+			conn = ds.getConnection();
+			
+			String sql = "delete from shop_product where no = ? ";
+						
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			
+			if(pstmt.executeUpdate() > 0) b = true;
+		} catch (Exception e) {
+			System.out.println("deleteProduct err : " + e);
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		return b;
 	}
 }
