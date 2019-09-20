@@ -110,3 +110,14 @@ function productDelete(no) {
 		document.delFrm.submit();
 	} 
 }
+
+// 카트 처리
+function cartUpdate(form) {
+	form.flag.value = "update";
+	form.submit();
+}
+
+function cartDelete(form) {
+	form.flag.value = "del";
+	form.submit();	
+}
