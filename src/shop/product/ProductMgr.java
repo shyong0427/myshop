@@ -15,6 +15,8 @@ import javax.sql.DataSource;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import shop.order.OrderBean;
+
 public class ProductMgr {
 	private Connection conn;
 	private PreparedStatement pstmt;
@@ -212,5 +214,27 @@ public class ProductMgr {
 			}
 		}
 		return b;
+	}
+	
+	public void reduceProduct(OrderBean order) {
+		try {
+			conn = ds.getConnection();
+			
+			String sql = "update shop_product set stock = (stock - ?) where no = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, order.getQuantity());
+			pstmt.setString(2, order.getProduct_no());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("reduceProduct err : " + e);
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e2) {
+			}
+		}
 	}
 }

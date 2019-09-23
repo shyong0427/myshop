@@ -121,3 +121,19 @@ function cartDelete(form) {
 	form.flag.value = "del";
 	form.submit();	
 }
+
+// 관리자 주문처리
+function orderDetail(no) {
+	document.detailFrm.no.value = no;
+	document.detailFrm.submit();
+}
+
+function orderUpdate(form) {
+	document.detailFrm.flag.value = "update";
+	document.detailFrm.submit();
+}
+
+function orderDelete(form) {
+	document.detailFrm.flag.value = "delete";
+	document.detailFrm.submit();
+}
