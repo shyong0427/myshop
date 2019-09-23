@@ -1,6 +1,6 @@
 package shop.member;
 
-public class MemberDto {	// DTO
+public class MemberDto { // DTO
 	private String id, passwd, name, email, phone, zipcode, address, job;
 
 	public String getId() {
