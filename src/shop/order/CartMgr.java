@@ -25,7 +25,7 @@ public class CartMgr {
 		return hCart;
 	}
 	
-	public void udpateCart(OrderBean obean) {
+	public void updateCart(OrderBean obean) {
 		String product_no = obean.getProduct_no();
 		hCart.put(product_no, obean);		
 	}

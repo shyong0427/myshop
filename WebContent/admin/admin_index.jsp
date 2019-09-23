@@ -3,12 +3,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="../js/script.js"></script>
+<title>관리자 페이지</title>
+	<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="../js/script.js"></script>
 </head>
 <body style="margin-top: 30px;">
-** 관리자 화면 ** <p/>
+	** 관리자 화면 ** <p/>
 <%@ include file="admin_top.jsp" %>
 	<table style="width: 80%">
 		<td style="background-image: url(../images/adminpic.gif); background-repeat: no-repeat; background-position: center;">

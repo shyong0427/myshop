@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자바 전문 쇼핑몰</title>
 </head>
 <body>
 <%

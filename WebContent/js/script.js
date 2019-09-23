@@ -123,17 +123,17 @@ function cartDelete(form) {
 }
 
 // 관리자 주문처리
-function orderDetail(no) {
+function orderDetail(no){
 	document.detailFrm.no.value = no;
 	document.detailFrm.submit();
 }
 
-function orderUpdate(form) {
+function orderUpdate(form){
 	document.detailFrm.flag.value = "update";
-	document.detailFrm.submit();
+	form.submit();
 }
 
-function orderDelete(form) {
+function orderDelete(form){
 	document.detailFrm.flag.value = "delete";
-	document.detailFrm.submit();
+	form.submit();	
 }
